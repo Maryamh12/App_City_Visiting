@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kode+Mono:wght@400..700&display=swap');
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --bg:        #353535;
+  --bg-dark:   #2a2a2a;
+  --bg-card:   #404040;
+  --white:     #ffffff;
+  --off-white: #f0f0f0;
+  --gold:      #c9a84c;
+  --gold-lt:   #e8d48a;
+  --smoke:     #aaaaaa;
+  --line:      rgba(255,255,255,0.15);
+  --nav-h:     70px;
+  --radius:    8px;
+  --shadow:    0 4px 20px rgba(0,0,0,0.35);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Anta", sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+img    { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; }
+a      { text-decoration: none; color: inherit; }
+input, textarea, select { font-family: inherit; }

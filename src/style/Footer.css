@@ -1,0 +1,92 @@
+/* ── Footer ────────────────────────────────────────────────── */
+.footer {
+  background: var(--white);
+  color: var(--bg);
+  border-top: 3px solid var(--bg);
+}
+
+.footer__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Brand row */
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__brand img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.footer__brand-name {
+  font-family: "Anta", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--bg);
+  letter-spacing: 0.04em;
+}
+
+/* Tagline */
+.footer__tagline {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.88rem;
+  color: var(--smoke);
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+/* Divider */
+.footer__divider {
+  width: 48px;
+  height: 2px;
+  background: var(--bg);
+  border-radius: 2px;
+  opacity: 0.15;
+}
+
+/* Social icons */
+.footer__social {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.footer__icon-link {
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  opacity: 0.65;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer__icon-link:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.footer__icon-link ion-icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* Copyright */
+.footer__copy {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  color: #aaa;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 600px) {
+  .footer__inner { padding: 28px 24px 20px; }
+}

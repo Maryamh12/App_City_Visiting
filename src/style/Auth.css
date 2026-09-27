@@ -1,0 +1,182 @@
+/* ── Shared Auth styles (Login + Register) ─────────────────── */
+
+/* Both pages fill exactly the viewport — no scroll */
+.auth-page {
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg);
+}
+
+/* Left image panel — fills full height */
+.auth-media {
+  overflow: hidden;
+  height: 100%;
+}
+.auth-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.auth-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Shift form slightly below true centre — image starts at top */
+  padding-top: calc(var(--nav-h) + 60px);
+  padding-bottom: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background: var(--bg);
+  height: 100%;
+}
+
+.auth-form-wrap {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* ── Heading ─────────────────────────────────────────────────── */
+.auth-heading {
+  font-family: "Anta", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 32px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Fields ──────────────────────────────────────────────────── */
+.field-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--smoke);
+  margin-bottom: 6px;
+  margin-top: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field-input {
+  display: block;
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  font-size: 0.97rem;
+  font-family: "Anta", sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.field-input::placeholder { color: var(--smoke); }
+.field-input:focus {
+  border-color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.13);
+}
+
+.field-password { position: relative; }
+.field-password .field-input { padding-right: 44px; }
+
+.field-eye {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: var(--smoke);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.field-eye:hover { color: var(--white); }
+
+/* ── Submit button ───────────────────────────────────────────── */
+.auth-submit {
+  width: 100%;
+  margin-top: 26px;
+  padding: 13px;
+  background: var(--white);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: "Anta", sans-serif;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.auth-submit:hover:not(:disabled) {
+  background: var(--off-white);
+  transform: translateY(-1px);
+}
+.auth-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Error ───────────────────────────────────────────────────── */
+.auth-error {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(255,80,50,0.15);
+  border: 1px solid rgba(255,80,50,0.4);
+  border-radius: var(--radius);
+  font-size: 0.87rem;
+  color: #ffb3a0;
+}
+
+/* ── Switch link ─────────────────────────────────────────────── */
+.auth-switch {
+  margin-top: 22px;
+  font-size: 0.9rem;
+  color: var(--smoke);
+  text-align: center;
+}
+.auth-switch-link {
+  color: var(--white);
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+.auth-switch-link:hover { opacity: 0.75; }
+
+/* ── Register — full-width with flower background ────────────── */
+.auth-page--full {
+  grid-template-columns: 1fr;
+  position: relative;
+  background:
+    url('https://images.pexels.com/photos/11661581/pexels-photo-11661581.jpeg?auto=compress&cs=tinysrgb&w=1200')
+    center/cover no-repeat;
+}
+.auth-page--full::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(53,53,53,0.78);
+  z-index: 0;
+}
+/* Register form is centred normally (has 4 fields, needs more room) */
+.auth-page--full .auth-panel {
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 0;      /* no upward shift — 4 fields need the space */
+  padding-top: var(--nav-h);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 780px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .auth-media { display: none; }
+  .auth-panel {
+    padding: 0 24px calc(var(--nav-h) + 24px);
+  }
+}
