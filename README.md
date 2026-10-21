@@ -5,26 +5,44 @@ This project utilizes the React framework for the frontend and Node.js for the b
 
 ## Deployed Application
 
-View the deployed site [here](https://citytoure.netlify.app/).
+View the deployed site [here](https://cityvisiting.netlify.app/).
 
-#### Sign up and create new account or try this demo user:
-- Username: mmm4545@email.com
-- Password: mmm454512345
+Backend repository: [Maryamh12/Citytour-Api](https://github.com/Maryamh12/Citytour-Api)
+
+Sign up to create an account, then browse cities, write stories, like and comment.
+
+## Running Locally
+
+```bash
+npm install
+cp .env.example .env        # set VITE_API_URL (default http://localhost:4000)
+npm run dev
+```
+
+Production builds read `VITE_API_URL` from `.env.production`, which points at the deployed API on Render.
+Vite only exposes environment variables whose names start with `VITE_`.
+
+## Recent Improvements
+
+- All requests go through one shared axios client (`src/api.js`) that attaches the JWT from `localStorage`
+  on each request, so logging out takes effect immediately and expired sessions are cleared automatically
+- API URL and Cloudinary settings come from `VITE_` environment variables
+- Uploaded images use Cloudinary's HTTPS `secure_url`
 
 
 ## Application Visuals
 
 <p align="center" >
-  <img src="./images/Comment.gif" alt="Demo 1" width="400" height="300"/>
-  <img src="./images/Homepage-2.gif" alt="Demo 2" width="400" height="300"/>
+  <img src="https://raw.githubusercontent.com/Maryamh12/Citytour-Api/main/images/Comment.gif" alt="Demo 1" width="400" height="300"/>
+  <img src="https://raw.githubusercontent.com/Maryamh12/Citytour-Api/main/images/Homepage-2.gif" alt="Demo 2" width="400" height="300"/>
 </p>
 <p align="center">
-  <img src="./images/Createstorypage.gif" alt="Demo 1" width="400" height="300"/>
-  <img src="./images/Homepage1.gif" alt="Demo 3" width="400" height="300"/>
+  <img src="https://raw.githubusercontent.com/Maryamh12/Citytour-Api/main/images/Createstorypage.gif" alt="Demo 1" width="400" height="300"/>
+  <img src="https://raw.githubusercontent.com/Maryamh12/Citytour-Api/main/images/Homepage1.gif" alt="Demo 3" width="400" height="300"/>
 </p>
 <p align="center">
-  <img src="./images/Tourbrowspage.gif" alt="Demo 2" width="400" height="300"/>
-  <img src="./images/Updatestorypage.gif" alt="Demo 3" width="400" height="300"/>
+  <img src="https://raw.githubusercontent.com/Maryamh12/Citytour-Api/main/images/Tourbrowspage.gif" alt="Demo 2" width="400" height="300"/>
+  <img src="https://raw.githubusercontent.com/Maryamh12/Citytour-Api/main/images/Updatestorypage.gif" alt="Demo 3" width="400" height="300"/>
 </p>
 
 
@@ -32,9 +50,9 @@ View the deployed site [here](https://citytoure.netlify.app/).
 ## Responsive Design
 
 <p align="center">
-  <img src="./images/Responsive1.gif" alt="Demo 1" width="250"/>
-  <img src="./images/Responsive2.gif" alt="Demo 2" width="250"/>
-  <img src="./images/Responsive3.gif" alt="Demo 3" width="250"/>
+  <img src="https://raw.githubusercontent.com/Maryamh12/Citytour-Api/main/images/Responsive1.gif" alt="Demo 1" width="250"/>
+  <img src="https://raw.githubusercontent.com/Maryamh12/Citytour-Api/main/images/Responsive2.gif" alt="Demo 2" width="250"/>
+  <img src="https://raw.githubusercontent.com/Maryamh12/Citytour-Api/main/images/Responsive3.gif" alt="Demo 3" width="250"/>
 </p>
 
 

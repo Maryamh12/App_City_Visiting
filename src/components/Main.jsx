@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { API_URL } from '../consts'
+import api from '../api'
 import '../style/Main.css'
 
 const Main = ({ setIsTransparentNav }) => {
@@ -21,7 +20,7 @@ const Main = ({ setIsTransparentNav }) => {
     setLoading(true)
     setErrorMessage('')
     try {
-      const { data } = await axios.post(`${API_URL}/search/`, { query })
+      const { data } = await api.post('/search', { query })
       if (data.data[0]) {
         localStorage.setItem('city', JSON.stringify(data.data[0]))
         navigate('/tourbrows')

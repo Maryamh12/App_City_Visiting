@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api'
 import { API_URL } from '../consts'
 import { parseApiError } from '../utils/apiError'
 import ErrorMessage from './ErrorMessage'
@@ -31,7 +31,7 @@ const Tourbrows = ({ setIsTransparentNav, fetchingComment, setFetchingComment })
       setLoading(true)
       setFetchError('')
       try {
-        const { data } = await axios.get(`${API_URL}/cats/`)
+        const { data } = await api.get('/cats')
 
         if (!data || data.length === 0) {
           setFetchError('No cities found in the database. Run npm run seed-db in your API folder.')
@@ -118,8 +118,7 @@ const Tourbrows = ({ setIsTransparentNav, fetchingComment, setFetchingComment })
     if (!commentInput.trim()) return
     setSubmitting(true)
     try {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.token}`
-      await axios.post(`${API_URL}/comment/${cityId}/${commentPanel._id}`, {
+      await api.post(`/comment/${cityId}/${commentPanel._id}`, {
         text: commentInput,
       })
       setCommentInput('')
@@ -135,8 +134,7 @@ const Tourbrows = ({ setIsTransparentNav, fetchingComment, setFetchingComment })
   const handleLike = async (storyId) => {
     setError(null)
     try {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.token}`
-      await axios.post(`${API_URL}/story/${storyId}/like`)
+      await api.post(`/story/${storyId}/like`)
       setFetchingComment(v => !v)
     } catch (err) {
       setError(parseApiError(err))

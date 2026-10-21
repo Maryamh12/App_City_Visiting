@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import axios from 'axios'
-import { API_URL } from '../consts'
+import api from '../api'
 import ErrorMessage from './ErrorMessage'
 import '../style/Auth.css'
 
@@ -43,7 +42,7 @@ const Register = ({ setIsTransparentNav }) => {
     }
     setLoading(true)
     try {
-      await axios.post(`${API_URL}/register`, formData)
+      await api.post('/register', formData)
       navigate('/login')
     } catch (err) {
       const msg = err.response?.data?.message ?? ''

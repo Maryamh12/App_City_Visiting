@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import axios from 'axios'
-import { API_URL } from '../consts'
+import api from '../api'
+import { CLOUDINARY_CLOUD_NAME, CLOUDINARY_UPLOAD_PRESET } from '../consts'
 import { parseApiError } from '../utils/apiError'
 import ErrorMessage from './ErrorMessage'
 import '../style/StoryForm.css'
@@ -38,10 +38,10 @@ const UpdateStory = ({ setIsTransparentNav, fetchingComment, setFetchingComment 
     script.async = true
     script.onload = () => {
       widgetRef.current = window.cloudinary.createUploadWidget(
-        { cloudName: 'dwxrq5htq', uploadPreset: 'rtjhoiu5' },
+        { cloudName: CLOUDINARY_CLOUD_NAME, uploadPreset: CLOUDINARY_UPLOAD_PRESET },
         (err, result) => {
           if (!err && result?.event === 'success') {
-            const url = result.info.url
+            const url = result.info.secure_url   // https, avoids mixed-content warnings
             setPreviewImage(url)
             setFormData(prev => ({ ...prev, image: url }))
           }
@@ -64,11 +64,7 @@ const UpdateStory = ({ setIsTransparentNav, fetchingComment, setFetchingComment 
     setLoading(true)
     setError(null)
     try {
-      await axios.patch(
-        `${API_URL}/story/${cityId}/${storyId}`,
-        formData,
-        { headers: { Authorization: `Bearer ${localStorage.token}` } }
-      )
+      await api.patch(`/story/${cityId}/${storyId}`, formData)
       setFetchingComment(v => !v)
       navigate('/tourbrows')
     } catch (err) {

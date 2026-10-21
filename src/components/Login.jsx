@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-import axios from 'axios'
-import { API_URL } from '../consts'
+import api from '../api'
 import ErrorMessage from './ErrorMessage'
 import '../style/Auth.css'
 
@@ -29,10 +28,9 @@ const Login = ({ setIsTransparentNav }) => {
     }
     setLoading(true)
     try {
-      const { data } = await axios.post(`${API_URL}/login`, formData)
+      const { data } = await api.post('/login', formData)
       localStorage.setItem('token', data.token)
       localStorage.setItem('userId', data.payload.id)
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`
       navigate('/tourbrows')
     } catch (err) {
       const status = err.response?.status
